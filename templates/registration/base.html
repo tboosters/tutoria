@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Django Simple Login{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1>Django Simple Login</h1>
+    {% if user.is_authenticated %}
+      Hi {{ user.first_name }} {{user.last_name}}!<br>
+      <a href="{% url 'logout' %}?next={% url 'login' %}">logout</a>
+    {% else %}
+      <a href="{% url 'login' %}?next={% url 'login' %}">login</a>
+    {% endif %}
+  </header>
+  <hr>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <hr>
+</body>
+</html>

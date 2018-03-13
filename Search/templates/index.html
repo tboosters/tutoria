@@ -1,0 +1,76 @@
+<!doctype html>
+{% load staticfiles %}
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="{% static 'site.webmanifest' %}">
+        <link rel="apple-touch-icon" href="{% static 'icon.png' %}">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header id="header">
+            <div class="container">
+                <ul>
+                    <nav_left id="nav_left">
+
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                           <div class="search_bar">
+                               <input id="search" type="text" name="search" placeholder="Search..">
+                               <button type="submit" class="searchButton">
+                                   <img src="{% static 'img/searchicon.png' %}" width="24px" height="24px">
+                               </button>
+                           </div>
+                        </li>
+                    </nav_left>
+                    <nav_right id="nav_right">
+                        <li>
+                            <a href="#">ProfilePic</a>
+                        </li>
+                        <li>
+                            <a href="#">Message</a>
+                        </li>
+                        <li>
+                            <a href="#">Wallet</a>
+                        </li>
+                        <li>
+                            <a href="#">Setting</a>
+                        </li>
+                    </nav_right>
+                </ul>
+            </div>
+        </header>
+        <div class="content">
+            <p>Hello world! This is HTML5 Boilerplate.</p>
+            <a href="/calendarPrivate/">Private Calendar</a>
+        </div>
+
+        <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}""></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-3.2.1.min.js"%}"><\/script>')</script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>

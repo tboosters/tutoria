@@ -1,0 +1,17 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    margin: auto;
+    padding: 20px;
+    left: 0;
+    top: 45px;
+    width: 100%; /* Full width */
+    background-color: WHITESMOKE;
+    border-bottom: 2px solid #ccc;
+    color: dimgray;
+}
+
+input {
+    font-size: 14px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- this is the profile of tutor that visible to students when doing searching -->
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title"></title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+    <body>
+    	<div id="accountInfo" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 50px; border-collapse: collapse;">
+            <h1 id="name"></h1>
+            <h2 id="tutorType"></h2>
+            <h2 id="hourlyRate"></h2>
+            <table class="info" id="info" style="font-size: 18px;"></table>
+        </div>
+
+	    <div id="tabs" style="overflow:hidden; position:relative; width:1000px; height:1350px; margin-top: 62px; margin: auto;"></div>
+
+	    <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+	    <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+	    <script type="application/javascript" src="{% static 'js/account/profileTutor.js' %}"></script>
+    </body>
+</html>

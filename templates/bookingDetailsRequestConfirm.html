@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Confirm Booking</title>
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bookingDetails.css' %}">
+
+</head>
+<style>
+    .couponCode
+    {
+        text-align:center;
+    }
+
+    .total
+    {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: 0;
+        width: 350px;
+    }
+
+    .total td:nth-child(1) {
+        text-align: right;
+    }
+
+    .total td:nth-child(2) {
+        text-align: right;
+        width: 50px;
+    }
+
+    .total td:nth-child(3) {
+        text-align: left;
+    }
+
+    .confirmButtonWrapper
+    {
+        margin-top: 30px;
+        text-align: right;
+    }
+
+    .confirmButton
+    {
+        width: 150px;
+        padding: 5px;
+        font-size: 14px;
+    }
+</style>
+<body>
+    <h1>Booking Details</h1>
+    <table class="details" id="details"></table>
+    <div class="couponCode" id="couponCode"></div>
+    <table class="total" id="total"></table>
+    <div class="terms" id="terms"></div>
+    <div class="confirmButtonWrapper" id="confirmButtonWrapper"></div>
+
+    <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/bookingDetails/bookingDetails.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/bookingDetails/bookingDetailsRequestConfirm.js' %}?v=00004"></script>
+</body>
+</html>

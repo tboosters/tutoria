@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="{% static 'site.webmanifest' %}">
+        <link rel="apple-touch-icon" href=" {% static 'icon.png' %}">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+    </head>
+
+    <style>
+        .timeTable tr
+        {
+            border: 1px solid gray;
+            height: 50px;
+        }
+    </style>
+
+    <body>
+        <div class="month">
+            <ul>
+                <li class="prev" id="prev">&#10094;</li>
+                <li class="next" id="next">&#10095;</li>
+                <li class="name">
+                    <span id="spanMonthAndYear"></span>
+                </li>
+            </ul>
+        </div>
+
+        <table class="weekdays">
+            <tr>
+                <th class="emptyCell"></th>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+        </table>
+
+        <table class="days">
+            <tr>
+                <th class="emptyCell"></th>
+                <th><span id="dayOne"></span></th>
+                <th><span id="dayTwo"></span></th>
+                <th><span id="dayThree"></span></th>
+                <th><span id="dayFour"></span></th>
+                <th><span id="dayFive"></span></th>
+                <th><span id="daySix"></span></th>
+                <th><span id="daySeven"></span></th>
+            </tr>
+        </table>
+
+        <table class="timeTable" id="timeTable">
+            <tr>
+                <th class="time">12a</th>
+                <td style="background: DODGERBLUE"
+                    onclick="onSelect(this)"
+                    onmouseover="onSelectMouseOver(this)"
+                    onmouseleave="onSelectMouseLeave(this)">
+                    Select
+                </td>
+                <td></td>
+                <td></td>
+                <td style="background: DODGERBLUE"
+                    onclick="onSelect(this)"
+                    onmouseover="onSelectMouseOver(this)"
+                    onmouseleave="onSelectMouseLeave(this)">
+                    Select
+                </td>
+                <td style="background: DODGERBLUE"
+                    onclick="onSelect(this)"
+                    onmouseover="onSelectMouseOver(this)"
+                    onmouseleave="onSelectMouseLeave(this)">
+                    Select
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">1a</th>
+                <td style="background: DODGERBLUE"
+                    onclick="onSelect(this)"
+                    onmouseover="onSelectMouseOver(this)"
+                    onmouseleave="onSelectMouseLeave(this)">
+                    Select
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <th class="time">2a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <th class="time">3a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <th class="time">4a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">5a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">6a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">7a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">8a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">9a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">10a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">11a</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">12p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">1p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">2p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">3p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">4p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">5p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">6p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">7p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">8p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">9p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">10p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="time">11p</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <script type="application/javascript">
+            var months = ['January','February','March','April','May','June','July',
+                'August','September','October','November','December'];
+            var today = new Date();
+            document.getElementById("spanMonthAndYear").innerHTML=months[today.getMonth()]+ ' ' + today.getFullYear();
+
+            //display all 7 dates of the current week
+            var start=0;
+            var day = today.getDay() - start;
+            var date = today.getDate() - day;
+
+            var START_DATE=new Date(today.setDate(date));
+
+            function loadDate () {
+                var tempDate=new Date(START_DATE);
+                if(tempDate.getDate()===1)
+                {
+                    document.getElementById("dayOne").innerHTML=tempDate.getDate()+'/'+(tempDate.getMonth()+1);
+                }
+                else
+                {
+                    document.getElementById("dayOne").innerHTML=tempDate.getDate();
+                }
+                tempDate.setDate(tempDate.getDate()+1);
+                if(tempDate.getDate()===1)
+                {
+                    document.getElementById("dayTwo").innerHTML=tempDate.getDate()+'/'+(tempDate.getMonth()+1);
+                }
+                else
+                {
+                    document.getElementById("dayTwo").innerHTML=tempDate.getDate();
+                }
+                tempDate.setDate(tempDate.getDate()+1);
+                if(tempDate.getDate()===1)
+                {
+                    document.getElementById("dayThree").innerHTML=tempDate.getDate()+'/'+(tempDate.getMonth()+1);
+                }
+                else
+                {
+                    document.getElementById("dayThree").innerHTML=tempDate.getDate();
+                }
+                tempDate.setDate(tempDate.getDate()+1);
+                if(tempDate.getDate()===1)
+                {
+                    document.getElementById("dayFour").innerHTML=tempDate.getDate()+'/'+(tempDate.getMonth()+1);
+                }
+                else
+                {
+                    document.getElementById("dayFour").innerHTML=tempDate.getDate();
+                }
+                tempDate.setDate(tempDate.getDate()+1);
+                if(tempDate.getDate()===1)
+                {
+                    document.getElementById("dayFive").innerHTML=tempDate.getDate()+'/'+(tempDate.getMonth()+1);
+                }
+                else
+                {
+                    document.getElementById("dayFive").innerHTML=tempDate.getDate();
+                }
+                tempDate.setDate(tempDate.getDate()+1);
+                if(tempDate.getDate()===1)
+                {
+                    document.getElementById("daySix").innerHTML=tempDate.getDate()+'/'+(tempDate.getMonth()+1);
+                }
+                else
+                {
+                    document.getElementById("daySix").innerHTML=tempDate.getDate();
+                }
+                tempDate.setDate(tempDate.getDate()+1);
+                if(tempDate.getDate()===1)
+                {
+                    document.getElementById("daySeven").innerHTML=tempDate.getDate()+'/'+(tempDate.getMonth()+1);
+                }
+                else
+                {
+                    document.getElementById("daySeven").innerHTML=tempDate.getDate();
+                }
+            }
+
+            loadDate();
+
+            //add listener to the next and previous key
+            var week=0; //0: displaying current week; 1: displaying the next week
+            document.getElementById("prev").addEventListener("click", function(e) {
+                if(week===1)
+                {
+                    START_DATE.setDate(START_DATE.getDate()-7);
+                    loadDate();
+                    week--;
+                }
+
+            });
+
+            document.getElementById("next").addEventListener("click", function(e) {
+                //e.target.style.color = "#F00";
+                if(week===0)
+                {
+                    START_DATE.setDate(START_DATE.getDate()+7);
+                    loadDate();
+                    week++;
+                }
+            });
+
+            function onSelect(cell)
+            {
+                var d=new Date(START_DATE);
+                var y=cell.parentNode.rowIndex;
+                var x=cell.cellIndex-1;
+                d.setDate(d.getDate()+x);
+                d.setHours(y, 0, 0, 0);
+                alert("Selected " + x + ", " + y + ";\nSelected date: " + d + "\nCurrent date: " + new Date());
+            }
+
+            function onSelectMouseOver(cell)
+            {
+                cell.style.color="#666";
+            }
+
+            function onSelectMouseLeave(cell)
+            {
+                cell.style.color="white";
+            }
+        </script>
+    </body>
+</html>

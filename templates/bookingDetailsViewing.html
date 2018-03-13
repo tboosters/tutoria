@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Booking Details</title>
+
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bookingDetails.css' %}">
+
+</head>
+<style>
+    .cancelButtonWrapper
+    {
+        margin-top: 30px;
+        text-align: right;
+    }
+
+    .cancelButton
+    {
+        width: 150px;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+</style>
+<body>
+    <h1>Booking Details</h1>
+    <table class="details" id="details"></table>
+    <div class="cancelButtonWrapper" id="cancelButtonWrapper"></div>
+    <div class="closeButtonWrapper" id="closeButtonWrapper"></div>
+
+    <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/bookingDetails/bookingDetails.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/bookingDetails/bookingDetailsViewing.js' %}"></script>
+</body>
+</html>

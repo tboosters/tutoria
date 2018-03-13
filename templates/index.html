@@ -1,0 +1,88 @@
+<!doctype html>
+{% load staticfiles %}
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>Tutoria</title>
+
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+        <header id="header">
+            <img id="logo" src="{% static 'img/logo.png' %}" width="160px" height="80px" style="padding: 15px 20px 10px 0;" onclick="onHomeSelected()">
+            {% csrf_token %}
+                <table id="login" style="padding-top: 17px;">
+                    <tr>
+                        <td style="font-size: 14px; color: dimgray;">Username</td>
+                        <td style="font-size: 14px; color: dimgray;">Password</td>
+                    </tr>
+                    <tr>
+                        <td><input type="username" id="username" placeholder="username"></td>
+                        <td><input type="password" id="password" placeholder="password"></td>
+                        <td><button type="button" onclick="onLogin()">login</button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="font-size: 14px; color: dimgray; text-decoration: underline;" onclick="forgotPassword()">Forgotten password?</td>
+                    </tr>
+                </table>
+        </header>
+
+        <div id="content">
+            <img style="margin-bottom: 60px;" src="{% static 'img/logo.png' %}">
+            <h1>Create a new account</h1>
+            <table style="text-align: left; margin: 0 auto;">
+                <tr>
+                    <td><input type="username" id="usernameIn" placeholder="Username"></td>
+                </tr>
+                <tr>
+                    <td><input type="password" id="password1" placeholder="Password"></td>
+                </tr>
+                <tr>
+                    <td><input type="password" id="password2" placeholder="Retype Password"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="firstname" placeholder="First name"></td>
+                    <td><input type="text" id="lastname" placeholder="Last name"></td>
+                </tr>
+                <tr>
+                    <td><input type="email" id="email" placeholder="Email"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="mobile" placeholder="Mobile number"></td>
+                </tr>
+                <tr>
+                    <td>Your are a...</td>
+                </tr> 
+                <tr>
+                    <td><input type="checkbox" id="student"> Student</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="tutor" onchange='isTutor(this)'> Tutor</td>
+                </tr>
+                <div>
+                    <tr id="tutor1" style="display: none;">
+                        <td><input type="text" id="tutorID" placeholder="tutor ID"><br>
+                            <input type="text" id="university" placeholder="university"><br>
+                            <input type="radio" id="contractedTutor"> Contracted Tutor 
+                            <input type="radio" id="privateTutor"> Private Tutor</td>
+                    </tr>
+                    <tr id="tutor2" style="display: none;">
+                        <td>Tutoring Fee per Hour (must be a mutiple of 10) $<input type="number" id="hourlyRate" step="10" style="width: 3em" value=0 min=0></td>
+                    </tr>
+                </div>
+                <tr>
+                    <td>Avater<br><input type="file" id="avatar" accept="image/*"></td>
+                </tr>                      
+            </table>
+            <button type="button" onclick="onSignUp()">Sign Up</button>
+        </div>
+        <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>

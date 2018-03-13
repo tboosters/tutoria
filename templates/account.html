@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title id="title"></title>
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navBar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    </head>
+    <body style="margin: 0; padding: 0; height: 100%; overflow: hidden;">
+        <header id="header">
+            <div class="container" id="container">
+                <ul>
+                    <nav>
+                        <div id="nav_left">
+                            <li>
+                                <img src="{% static 'img/logo.png' %}" width="60px" height="30px" style="padding: 7.5px 20px 7.5px 0;" onclick="onHomeSelected()">
+                            </li>
+                            <li>
+                                <div class="search_bar">
+                                    <input id="search" type="text" name="keyword" placeholder="Search.." onkeypress="onEnterKeyPress()">
+                                    <button class="searchButton" id="searchButton" onclick="onSearch()">
+                                        <img src="{% static 'img/searchicon.png' %}" width="24px" height="24px">
+                                    </button>
+                                </div>
+                            </li>
+                            <li id="showHideAdvancedSearch" style="font-size: 12px; margin-left: -20px; margin-top: 20px; color: dimgrey; text-decoration: underline;" 
+                            onclick="showHideAdvancedSearch()">show advanced search</li>
+                        </div>
+                        
+                        <div id="nav_right">
+                            <li>
+                                <img src="{% static 'img/profile.png' %}" width="30px" height="30px" style="padding: 7.5px 20px 7.5px 20px;" onclick="onLogout()"> 
+                            
+                            </li>
+                            <li>
+                                <img src="{% static 'img/message.png' %}" width="30px" height="30px" style="padding: 7.5px 20px 7.5px 20px;">
+                            </li>
+                            <li>
+                                <img src="{% static 'img/wallet.png' %}" width="30px" height="30px" style="padding: 7.5px 20px 7.5px 20px;" onclick="onWallet()">
+                            </li>
+                            <li>
+                                <img src="{% static 'img/setting.png' %}" width="30px" height="30px" style="padding: 7.5px 20px 7.5px 20px;" onclick="onSetting()">
+                            </li>
+                        </div>
+                    </nav>
+                </ul>
+            </div>
+        </header>
+        <div id="advancedSearch" class="modal">
+            <h3>More Options</h3>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>University</td>
+                    <td><input type="text" id="university" size="35"></td>
+
+                    <td><input type="checkbox" id="contractedTutor"> Contracted Tutor</td>
+                </tr>
+                <tr>
+                    <td>University Course</td>
+                    <td><input type="text" id="course" placeholder="e.g. COMP3297 ENGG1111, seperated by space" size="35"></td>
+
+                    <td><input type="checkbox" id="privateTutor"> Private Tutor</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td><input type="number" id="priceFrom" step="10" style="width: 3em"> to <input type="number" id="priceTo" step="10" style="width: 3em"></td>
+
+                    <td><input type="checkbox" id="timeSlotAvailable"> Only display tutors with available timeslots</td>
+                </tr>
+                <tr>
+                    <td>Subject Tag</td>
+                    <td colspan="2"><input type="text" id="subjectTag" placeholder="e.g. Django Python, seperated by space" size="70"></td>
+                </tr>
+            </table>
+            <button type="button" onclick="onSearch()">Search</button>
+        </div>
+        <iframe id="content" name="content" width="100%" frameBorder="0" style="margin-top: 45px"></iframe>
+
+        <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/account/account.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/account/wallet.js' %}"></script>
+        <script type="text/javascript">
+            function onLogout() //not done, wait for backend
+            {
+                if(!confirm("Are you sure you want to logout?")){
+                    return;
+                }
+                var URL="../logout";
+                var data={'csrfmiddlewaretoken':"{{ csrf_token }}"};
+                $.post(URL, JSON.stringify(data), function(response)
+                {
+                    if(response.errno==0)
+                    {
+                        console.log("logouted");
+                        sessionStorage.clear();
+                        window.location.href="{% url "index" %}";
+                    }
+                    else
+                    {
+                        alert("logout error");   
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

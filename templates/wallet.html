@@ -1,0 +1,98 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+	<script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+	<script type="application/javascript" src="{% static 'js/account/wallet.js' %}"></script>
+</head>
+<style>
+    .modal{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .modal-content{
+        align-items: center;
+        background-color: #fefefe;
+        border-style: groove;
+        margin: 1% auto;
+        padding: 10px;
+        width: 70%;
+    }
+
+    .close{
+        color: #000;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus{
+        cursor: pointer;
+        color: #888;
+        text-decoration: none;
+    }
+</style>
+
+<body onload="getActions(); getWallet(); getTransactions();">
+	<center>
+		<div id="wallet">
+			<h2>Wallet</h2>
+			<p>
+				Balance: $<span id="wallet_balance"></span>
+			</p>
+			<div id="wallet_actions"></div>
+		</div>
+
+		<div id="transaction">
+			<h2>Transaction records in 30 days</h2>
+			<p>
+				<table id="transaction_table" style="width: 850px">
+					<thead>
+						<th style="width: 150px">Time</th>
+						<th style="width: 150px">Amount</th>
+						<th style="width: 550px">Details</th>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</p>
+		</div>
+	</center>
+
+	<div id="addValueModal" class="modal">
+        <form id="addValueForm" class="modal-content">
+            <div class="close" onclick="closeAddValue()">&times;</div>
+            <br>
+            <fieldset>
+                <legend><b>Add value to This Wallet</b></legend>
+                Amount: <input name="amount">
+            </fieldset>
+            <hr>
+            <button type="button" onclick="addValue()">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+
+    <div id="transferMoneyModal" class="modal">
+        <form id="transferMoneyForm" class="modal-content">
+            <div class="close" onclick="closeTransferMoney()">&times;</div>
+            <br>
+            <fieldset>
+                <legend><b>Transfer Money from This Wallet</b></legend>
+                Amount: <input name="amount">
+            </fieldset>
+            <hr>
+            <button type="button" onclick="transferMoney()">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+
+</body>
+</html>

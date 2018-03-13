@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+    </head>
+
+    <style>
+        .timeTable tr:nth-child(odd)
+        {
+            border-top: 1px solid gray;
+            border-bottom: 1px dashed gray;
+            height: 25px;
+        }
+
+        .timeTable tr:nth-child(even)
+        {
+            border-top: 1px dashed gray;
+            border-bottom: 1px solid gray;
+            height: 25px;
+        }
+    </style>
+
+    <body>
+        <div class="month">
+            <ul>
+                <li class="prev" id="prev">&#10094;</li>
+                <li class="next" id="next">&#10095;</li>
+                <li class="name">
+                    <span id="spanMonthAndYear"></span>
+                </li>
+            </ul>
+        </div>
+
+        <table class="weekdays">
+            <tr>
+                <th class="emptyCell"></th>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+        </table>
+
+        <table class="days" id="days"></table>
+        <table class="timeTable" id="timeTable"></table>
+
+        <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/calendar/calendar.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/calendar/calendarDisplay.js' %}"></script>
+    </body>
+</html>

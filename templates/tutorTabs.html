@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/tutorTabs.css' %}">
+    </head>
+    <style>
+        .modal{
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .modal-content{
+            align-items: center;
+            background-color: #fefefe;
+            border-style: groove;
+            margin: 1% auto;
+            padding: 10px;
+            width: 70%;
+        }
+
+        .close{
+            color: #000;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus{
+            cursor: pointer;
+            color: #888;
+            text-decoration: none;
+        }
+    </style>
+    <body>
+        <div class="tab">
+            <button class="tabLinks" onclick="openInfo(event, 'Calendar')" id="defaultOpen">Calendar</button>
+            <button class="tabLinks" onclick="openInfo(event, 'Biography')">Biography</button>
+            <button class="tabLinks" onclick="openInfo(event, 'Review')">Review</button>
+        </div>
+
+        <div id="Calendar" class="tabContent" style="overflow:hidden; position:relative; width:100%; height:1299px;"></div>
+        <div id="Biography" class="tabContent" style="overflow:hidden; position:relative; width:100%; height:1299px;">
+            <h3>Biography</h3>
+            <p>Paris is the capital of France.</p>
+        </div>
+        <div id="Review" class="tabContent" style="overflow:hidden; position:relative; width:100%; height:1299px;">
+            <h3>Review</h3>
+            <center>
+                <button id="requestReview_button" onclick="requestReview()">Review this tutor</button>
+            </center>
+
+            <div id="reviewModal" class="modal">
+                <form id="reviewForm" class="modal-content">
+                    <div class="close" onclick="closeReviewModal()">&times;</div>
+                    <br>
+                    <fieldset>
+                        <legend><b>Review this tutor</b></legend>
+                        Stars:
+                        <select name="stars">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <p>
+                        Comment:
+                        <textarea name="comment" style="width: 400px"></textarea>
+                        <p>
+                        Anonymous: <input type="checkbox" name="is_anonymous">
+                    </fieldset>
+                    <hr>
+                    <button type="button" onclick="review()">Submit</button>
+                    <button type="reset">Reset</button>
+                </form>
+            </div>
+            <p>
+            <div id="reviewEntries">
+                <center>
+                <h3>Average Rating: <span id="reviewEntries_avg"></span>/5</h3>
+                <p>
+                <table id="reviewEntries_table" style="width: 800px">
+                    <thead>
+                        <th>Stars</th>
+                        <th>Student</th>
+                        <th>Review</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </center>
+            </div>
+        </div>
+
+        <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/account/tutorReview.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/tutorTabs.js' %}"></script>
+    </body>
+</html>

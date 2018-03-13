@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- {% load staticfiles %} -->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title id="title"></title>
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/searchResult.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body style="width: 1000px; margin: auto;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: left; padding-left: 50px;"><h1>Result<h1></td>
+                <td style="text-align: right; padding-right: 20px;">
+                    Sort according to 
+                    <select style="font-size: 14px;" onchange="sorting(this.selectedIndex)">
+                        <option value="hourlyRate">Hourly Rate</option>
+                        <option value="rating">Average Review Score</option>
+                    </select>
+
+                </td>
+            </tr>
+        </table>
+
+        <ul id="searchResult" style="list-style-type:none;"></ul>
+
+        <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/account/searchResult.js' %}"></script>
+    </body>
+</html>

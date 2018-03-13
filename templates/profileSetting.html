@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    </head>
+    <body>
+        <form id="profileSetting">
+        	<table id="setting">
+                <tr>
+                    <td>First name:</td>
+                    <td>
+                        <input type='text' id='firstName' name="first_name" value="">
+                    </td> 
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td>
+                    <input type='text' id='lastName' name="last_name" value="">
+                </td> 
+            </tr> 
+            <tr>
+                <td>Contact email address:</td>
+                <td>
+                    <input type='email' id='email' name="email" value="">
+                </td> 
+            </tr>
+            <tr>
+                <td>Contact phone number:</td>
+                <td><input type='text' id='phone' name="phone_number" value=""></td>
+            </tr>
+            </table>
+        </form>
+        <button id="apply" onclick="onApply()">Apply</button>
+        <script type="application/javascript" src="{% static 'js/vendor/jquery-3.2.1.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+        <script type="application/javascript" src="{% static 'js/account/userProfileSetting.js' %}"></script>
+    </body>
+</html>
